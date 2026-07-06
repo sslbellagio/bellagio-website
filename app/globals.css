@@ -1,26 +1,225 @@
-@import "tailwindcss";
+/* ============================================================
+   SSL BELLAGIO — GLOBAL THEME FILE
+   ============================================================
+   HOW TO CHANGE THE THEME:
+   - Brand color: change --color-brand and its tints/shades below
+   - Heading font: change --font-heading (import the new Google Font in layout.tsx too)
+   - Body font: change --font-body (import in layout.tsx too)
+   - Section backgrounds: change --bg-dark, --bg-parchment, --bg-light
+   All values cascade to every component automatically.
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Google Fonts are imported in layout.tsx ---- */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- BRAND COLORS ---- */
+  /* Primary brand gold — derived from SSL brochure color #96723E */
+  --color-brand:        #96723E;   /* Change this one value to retheme the whole site */
+  --color-brand-light:  #C4A06A;   /* Lighter tint — for hover states, borders */
+  --color-brand-dark:   #6B4E28;   /* Darker shade — for active states */
+  --color-brand-pale:   #F5EDD8;   /* Very light tint — parchment section backgrounds */
+  --color-brand-xpale:  #FBF7F0;   /* Lightest — alternating light section bg */
+
+  /* ---- NEUTRAL PALETTE ---- */
+  --color-dark:         #1A1208;   /* Hero, footer, darkest backgrounds */
+  --color-dark-mid:     #2C1F0E;   /* Footer mid tone */
+  --color-dark-subtle:  #3D2E14;   /* Dark card backgrounds */
+  --color-white:        #FFFFFF;
+  --color-off-white:    #FAFAF8;   /* Light section backgrounds */
+  --color-text-primary: #1A1208;   /* Main body text on light backgrounds */
+  --color-text-muted:   #6B5D48;   /* Secondary text, captions */
+  --color-text-light:   #F5EDD8;   /* Text on dark backgrounds */
+  --color-text-gold:    #C4A06A;   /* Gold text on dark backgrounds */
+  --color-border:       rgba(150, 114, 62, 0.2); /* Subtle brand-tinted border */
+  --color-border-strong:rgba(150, 114, 62, 0.5); /* Stronger border */
+
+  /* ---- SECTION BACKGROUNDS (alternating rhythm) ---- */
+  --bg-hero:            #1A1208;   /* Section 1: Hero */
+  --bg-about:           #F5EDD8;   /* Section 2: About — parchment */
+  --bg-amenities:       #FAFAF8;   /* Section 3: Amenities — off-white */
+  --bg-location:        #2C1F0E;   /* Section 4: Location — dark */
+  --bg-floorplan:       #FAFAF8;   /* Section 5: Floor Plans — off-white */
+  --bg-contact:         #F5EDD8;   /* Section 6: Contact — parchment */
+  --bg-footer:          #1A1208;   /* Footer — darkest */
+
+  /* ---- TYPOGRAPHY ---- */
+  /* To change fonts, update these variables AND the Google Fonts import in layout.tsx */
+  --font-heading: 'Cormorant Garamond', Georgia, serif; /* Display/heading font */
+  --font-body:    'Jost', system-ui, sans-serif;         /* Body/UI font */
+  --font-mono:    'Courier New', monospace;
+
+  /* ---- FONT SIZES (fluid scale) ---- */
+  --text-hero:    clamp(2.8rem, 6vw, 5rem);    /* Hero H1 */
+  --text-h2:      clamp(2rem, 4vw, 3.2rem);    /* Section headings */
+  --text-h3:      clamp(1.2rem, 2vw, 1.6rem);  /* Card headings */
+  --text-body:    clamp(0.9rem, 1.2vw, 1rem);  /* Body text */
+  --text-caption: 0.75rem;                     /* Labels, badges */
+
+  /* ---- SPACING ---- */
+  --section-py:   clamp(4rem, 8vw, 7rem);  /* Vertical padding for all sections */
+  --container-px: clamp(1.25rem, 5vw, 5rem); /* Horizontal padding */
+  --max-width:    1280px;
+
+  /* ---- EFFECTS ---- */
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --gold-rule-gradient: linear-gradient(90deg, transparent, #96723E, transparent);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ---- BASE RESET & DEFAULTS ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: auto; } /* Lenis handles smooth scroll — keep this auto */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip; /* clip is safer than hidden for Lenis smooth scroll */
 }
+
+/* ---- HEADING DEFAULTS ---- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+/* ---- GOLD RULE DIVIDER ---- */
+/* Usage: <div className="gold-rule" /> */
+.gold-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--color-brand);
+  margin: 1rem 0;
+}
+
+.gold-rule-center {
+  width: 60px;
+  height: 1px;
+  background: var(--color-brand);
+  margin: 1rem auto;
+}
+
+/* ---- BRAND BUTTON STYLES ---- */
+.btn-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-brand);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.btn-brand:hover { background: var(--color-brand-dark); }
+
+.btn-outline-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--color-brand);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 1px solid var(--color-brand);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.btn-outline-brand:hover {
+  background: var(--color-brand);
+  color: var(--color-white);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--color-text-gold);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 1px solid var(--color-brand-light);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.btn-outline-light:hover {
+  background: var(--color-brand);
+  color: var(--color-white);
+  border-color: var(--color-brand);
+}
+
+/* ---- SECTION CONTAINER ---- */
+.section-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--section-py) var(--container-px);
+}
+
+/* ---- FORM STYLES ---- */
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border-strong);
+  padding: 0.75rem 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: inherit;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.form-input::placeholder { color: var(--color-text-muted); font-size: 0.85rem; }
+.form-input:focus { border-bottom-color: var(--color-brand); }
+
+.form-input-dark {
+  border-bottom-color: rgba(196, 160, 106, 0.4);
+  color: var(--color-text-light);
+}
+.form-input-dark::placeholder { color: rgba(196, 160, 106, 0.5); }
+.form-input-dark:focus { border-bottom-color: var(--color-brand-light); }
+
+/* ---- ANIMATION UTILITY CLASSES ---- */
+/* Used by Framer Motion as initial/animate targets */
+.fade-up-hidden { opacity: 0; transform: translateY(40px); }
+.fade-up-visible { opacity: 1; transform: translateY(0); }
+
+/* ---- SWIPER OVERRIDES (Amenities carousel) ---- */
+.swiper-pagination-bullet {
+  background: var(--color-brand) !important;
+  opacity: 0.4;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: var(--color-brand) !important;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: var(--color-brand) !important;
+  font-size: 1.2rem !important;
+}
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-dark); }
+::-webkit-scrollbar-thumb { background: var(--color-brand); border-radius: 2px; }
