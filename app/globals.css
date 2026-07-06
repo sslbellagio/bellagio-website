@@ -80,7 +80,8 @@ body {
   background: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip; /* clip is safer than hidden for Lenis smooth scroll */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* ---- HEADING DEFAULTS ---- */

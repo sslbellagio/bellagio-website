@@ -53,8 +53,9 @@ export default function Navbar() {
           background: scrolled ? 'rgba(26,18,8,0.96)' : 'rgba(26,18,8,0.88)',
           backdropFilter: 'blur(12px)',
           borderBottom: '1px solid rgba(150,114,62,0.2)',
-          padding: '0.75rem 2rem',
+          padding: '0 2rem',
           display: 'flex', alignItems: 'center',
+          height: '80px', boxSizing: 'border-box'
         }}
         role="navigation"
         aria-label="Main navigation"

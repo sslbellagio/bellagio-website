@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Cormorant_Garamond, Jost } from 'next/font/google'
 import './globals.css'
 import LenisProvider from '@/components/providers/LenisProvider'
+import WhatsAppButton from '@/components/ui/WhatsAppButton'
 
 // ---- HEADING FONT ----
 const cormorant = Cormorant_Garamond({
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LenisProvider>
           {children}
         </LenisProvider>
+        <WhatsAppButton />
       </body>
     </html>
   )
