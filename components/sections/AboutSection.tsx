@@ -5,9 +5,9 @@ import SectionHeading from '../ui/SectionHeading'
 import AnimatedCounter from '../ui/AnimatedCounter'
 
 const STATS = [
-  { value: 25, suffix: '+', label: 'Years of\nFulfilling Dreams' },
-  { value: 2, suffix: '+', label: 'Million Sq.Ft.\nDelivered' },
-  { value: 70, suffix: '+', label: 'Projects\nDelivered' },
+  { value: 28, suffix: '+', label: 'Years of\nFulfilling Dreams' },
+  { value: 2.5, suffix: '+', label: 'Million Sq.Ft.\nDelivered' },
+  { value: 72, suffix: '+', label: 'Projects\nDelivered' },
   { value: 7200, suffix: '+', label: 'Happy\nFamilies' },
 ]
 
@@ -48,7 +48,7 @@ export default function AboutSection() {
               borderRight: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)'
             }}>
               <div style={{
-                fontFamily: 'var(--font-heading)', fontSize: '3rem', fontWeight: 300,
+                fontFamily: 'var(--font-body)', fontSize: '3rem', fontWeight: 400,
                 color: 'var(--color-brand)', lineHeight: 1
               }}>
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
@@ -72,13 +72,13 @@ export default function AboutSection() {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }} transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
             style={{ position: 'relative', aspectRatio: '4/5' }}>
-            
+
             <div style={{
-              position: 'absolute', inset: '-15px', 
-              border: '1px solid rgba(150,114,62,0.3)', zIndex: 0 
+              position: 'absolute', inset: '-15px',
+              border: '1px solid rgba(150,114,62,0.3)', zIndex: 0
             }} />
             <div style={{
-              position: 'absolute', inset: '15px', 
+              position: 'absolute', inset: '15px',
               border: '1px solid rgba(150,114,62,0.6)', zIndex: 2, pointerEvents: 'none'
             }} />
 
@@ -103,7 +103,7 @@ export default function AboutSection() {
                 <motion.div key={i} custom={i} variants={cardVariants} initial="hidden"
                   whileInView="visible" viewport={{ once: true }}>
                   <div style={{
-                    fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 400,
+                    fontFamily: 'var(--font-body)', fontSize: '1.6rem', fontWeight: 500,
                     color: 'var(--color-brand)'
                   }}>{h.value}</div>
                   <p style={{

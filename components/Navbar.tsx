@@ -65,7 +65,7 @@ export default function Navbar() {
           <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
             style={{ display: 'flex', alignItems: 'center' }}>
             <Image
-              src="/images/bellagio-logo.webp"
+              src="/images/bellagio-logo.png"
               alt="SSL Bellagio Logo"
               width={140}
               height={70}
