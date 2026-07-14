@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import SectionHeading from '../ui/SectionHeading'
+import Image from 'next/image'
 
 const CONNECTIVITY = {
   'Commute': [
@@ -46,6 +47,7 @@ export default function LocationSection() {
         />
 
         {/* Map iframe wrapped simply. Removed heavy animations to ensure smooth scrolling. */}
+        {/* 
         <div style={{ marginBottom: '4rem', border: '1px solid rgba(150,114,62,0.3)', overflow: 'hidden', background: '#e5e3df' }}>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0!2d73.085!3d19.215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSonar%20Pada%2C%20Dombivli%20East!5e0!3m2!1sen!2sin!4v1"
@@ -54,6 +56,18 @@ export default function LocationSection() {
             allowFullScreen loading="lazy"
             title="SSL Bellagio location map"
             referrerPolicy="no-referrer-when-downgrade" />
+        </div> 
+        */}
+
+        <div style={{ marginBottom: '4rem', border: '1px solid rgba(150,114,62,0.3)', overflow: 'hidden', background: '#e5e3df', position: 'relative' }}>
+          <Image
+            src="/images/map-location-final.png"
+            alt="SSL Bellagio Location Map"
+            width={1200}
+            height={600}
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+            priority
+          />
         </div>
 
         <div style={{
@@ -62,12 +76,12 @@ export default function LocationSection() {
         }}>
           {Object.entries(CONNECTIVITY).map(([category, items], ci) => (
             <motion.div key={category}
-              initial={{ opacity: 0, y: 15 }} 
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px -50px 0px" }} 
+              viewport={{ once: true, margin: "0px 0px -50px 0px" }}
               transition={{ duration: 0.4 }}
               style={{
-                padding: '1.5rem', 
+                padding: '1.5rem',
                 border: '1px solid rgba(150,114,62,0.2)',
                 background: 'rgba(26,18,8,0.5)'
               }}>

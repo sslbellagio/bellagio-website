@@ -294,9 +294,9 @@ export default function Banner1({ onEnquire }: BannerProps) {
 
             {/* EDITABLE: Main headline — "AI LIVING" is the orange accent */}
             <h2 className="b1-headline">
-              Live where connectivity meets the<br />
-              township lifestyle at{' '}
-              <span className="b1-hl-accent">AI Living</span>.
+              At the center of every convince<br />
+              {/* township lifestyle at{' '}
+              <span className="b1-hl-accent">AI Living</span>. */}
             </h2>
 
             {/* Diamond divider matching reference */}
