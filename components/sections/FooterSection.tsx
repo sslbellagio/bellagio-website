@@ -59,7 +59,7 @@ export default function FooterSection() {
               }}
             >
               <Image
-                src="/images/bellagio-logo.webp"
+                src="/images/bellagio-logo.png"
                 alt="SSL Life Spaces"
                 width={200}
                 height={80}
